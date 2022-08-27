@@ -1,5 +1,5 @@
 import test from 'ava';
-import ipRegex from './index.js';
+import ipRegex from './esm/index.js';
 
 const v4 = [
 	'0.0.0.0',

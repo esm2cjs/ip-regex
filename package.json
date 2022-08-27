@@ -1,17 +1,21 @@
 {
-	"name": "ip-regex",
+	"name": "@esm2cjs/ip-regex",
 	"version": "5.0.0",
-	"description": "Regular expression for matching IP addresses (IPv4 & IPv6)",
+	"description": "Regular expression for matching IP addresses (IPv4 & IPv6). This is a fork of sindresorhus/ip-regex, but with CommonJS support.",
 	"license": "MIT",
-	"repository": "sindresorhus/ip-regex",
-	"funding": "https://github.com/sponsors/sindresorhus",
+	"repository": "esm2cjs/ip-regex",
+	"funding": "https://github.com/sponsors/AlCalzone",
 	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"name": "Dominic Griesel",
+		"email": "d.griesel@gmx.net"
 	},
-	"type": "module",
-	"exports": "./index.js",
+	"exports": {
+		".": {
+			"import": "./esm/index.js",
+			"require": "./cjs/index.js"
+		},
+		"./package.json": "./package.json"
+	},
 	"engines": {
 		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
 	},
@@ -19,8 +23,8 @@
 		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js",
-		"index.d.ts"
+		"cjs/",
+		"esm/"
 	],
 	"keywords": [
 		"ip",
@@ -43,5 +47,31 @@
 		"ava": "^3.15.0",
 		"tsd": "^0.19.1",
 		"xo": "^0.47.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"main": "cjs/index.js",
+	"module": "esm/index.js",
+	"types": "esm/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"esm/index.d.ts": [
+				"esm/index.d.ts"
+			],
+			"cjs/index.d.ts": [
+				"esm/index.d.ts"
+			],
+			"*": [
+				"esm/*"
+			]
+		}
+	},
+	"xo": {
+		"ignores": [
+			"cjs",
+			"**/*.test-d.ts",
+			"**/*.d.ts"
+		]
 	}
 }
